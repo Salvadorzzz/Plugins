@@ -1,0 +1,38 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "e:\\widget\\mywidget\\plugins\\myblankplugin\\intermediate\\build\\win64\\unrealeditor\\development\\myblankplugin\\module.myblankplugin.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "e:\\widget\\mywidget\\plugins\\myblankplugin\\intermediate\\build\\win64\\unrealeditor\\development\\myblankplugin\\definitions.myblankplugin.h",
+            "e:\\widget\\mywidget\\plugins\\myblankplugin\\source\\myblankplugin\\private\\fmyblankplugincommands.cpp",
+            "e:\\widget\\mywidget\\plugins\\myblankplugin\\source\\myblankplugin\\public\\fmyblankplugincommands.h",
+            "e:\\widget\\mywidget\\plugins\\myblankplugin\\source\\myblankplugin\\private\\myblankplugin.cpp",
+            "e:\\widget\\mywidget\\plugins\\myblankplugin\\source\\myblankplugin\\public\\myblankplugin.h",
+            "e:\\unrealengine5\\engine\\source\\runtime\\core\\public\\misc\\messagedialog.h",
+            "e:\\unrealengine5\\engine\\source\\developer\\toolmenus\\public\\toolmenus.h",
+            "e:\\unrealengine5\\engine\\source\\developer\\toolmenus\\public\\itoolmenusmodule.h",
+            "e:\\unrealengine5\\engine\\source\\developer\\toolmenus\\public\\toolmenu.h",
+            "e:\\unrealengine5\\engine\\source\\developer\\toolmenus\\public\\toolmenuowner.h",
+            "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\toolmenus\\toolmenuowner.generated.h",
+            "e:\\unrealengine5\\engine\\source\\developer\\toolmenus\\public\\toolmenudelegates.h",
+            "e:\\unrealengine5\\engine\\source\\developer\\toolmenus\\public\\toolmenumisc.h",
+            "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\toolmenus\\toolmenumisc.generated.h",
+            "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\toolmenus\\toolmenudelegates.generated.h",
+            "e:\\unrealengine5\\engine\\source\\developer\\toolmenus\\public\\toolmenusection.h",
+            "e:\\unrealengine5\\engine\\source\\developer\\toolmenus\\public\\toolmenuentry.h",
+            "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\toolmenus\\toolmenuentry.generated.h",
+            "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\toolmenus\\toolmenusection.generated.h",
+            "e:\\unrealengine5\\engine\\source\\runtime\\slate\\public\\framework\\multibox\\toolmenubase.h",
+            "e:\\unrealengine5\\engine\\source\\runtime\\core\\public\\misc\\namepermissionlist.h",
+            "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\slate\\toolmenubase.generated.h",
+            "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\toolmenus\\toolmenu.generated.h",
+            "e:\\unrealengine5\\engine\\source\\developer\\toolmenus\\public\\toolmenuentryscript.h",
+            "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\toolmenus\\toolmenuentryscript.generated.h",
+            "e:\\unrealengine5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\toolmenus\\toolmenus.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

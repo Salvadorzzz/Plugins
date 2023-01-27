@@ -1,0 +1,10 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.MyBlankPlugin.cpp.obj": [
+			"MyBlankPlugin.cpp.obj",
+			"MyBlankPluginCommands.cpp.obj",
+			"MyBlankPluginStyle.cpp.obj"
+		]
+	}
+}

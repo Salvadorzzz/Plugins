@@ -1,0 +1,10 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.MyEditorToolbarButton.cpp.obj": [
+			"MyEditorToolbarButton.cpp.obj",
+			"MyEditorToolbarButtonCommands.cpp.obj",
+			"MyEditorToolbarButtonStyle.cpp.obj"
+		]
+	}
+}

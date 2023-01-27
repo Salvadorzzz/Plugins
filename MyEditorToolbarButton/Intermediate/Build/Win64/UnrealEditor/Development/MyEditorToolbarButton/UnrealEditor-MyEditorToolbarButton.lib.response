@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-MyEditorToolbarButton.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"..\Intermediate\Build\Win64\UnrealEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h.obj"
+"E:\Widget\MyWidget\Plugins\MyEditorToolbarButton\Intermediate\Build\Win64\UnrealEditor\Development\MyEditorToolbarButton\Module.MyEditorToolbarButton.cpp.obj"
+"..\Intermediate\Build\Win64\UnrealEditor\Development\Default.rc2.res"
+/OUT:"E:\Widget\MyWidget\Plugins\MyEditorToolbarButton\Intermediate\Build\Win64\UnrealEditor\Development\MyEditorToolbarButton\UnrealEditor-MyEditorToolbarButton.lib"
