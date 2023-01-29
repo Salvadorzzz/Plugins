@@ -2,3 +2,4 @@
 #include "E:/Widget/MyWidget/Plugins/MyEditorStandaloneWindow/Source/MyEditorStandaloneWindow/Private/MyEditorStandaloneWindow.cpp"
 #include "E:/Widget/MyWidget/Plugins/MyEditorStandaloneWindow/Source/MyEditorStandaloneWindow/Private/MyEditorStandaloneWindowCommands.cpp"
 #include "E:/Widget/MyWidget/Plugins/MyEditorStandaloneWindow/Source/MyEditorStandaloneWindow/Private/MyEditorStandaloneWindowStyle.cpp"
+#include "E:/Widget/MyWidget/Plugins/MyEditorStandaloneWindow/Source/MyEditorStandaloneWindow/Private/SMySlate.cpp"

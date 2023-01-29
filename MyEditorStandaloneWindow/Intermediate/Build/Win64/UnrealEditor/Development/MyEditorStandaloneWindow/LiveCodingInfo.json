@@ -4,7 +4,8 @@
 		"Module.MyEditorStandaloneWindow.cpp.obj": [
 			"MyEditorStandaloneWindow.cpp.obj",
 			"MyEditorStandaloneWindowCommands.cpp.obj",
-			"MyEditorStandaloneWindowStyle.cpp.obj"
+			"MyEditorStandaloneWindowStyle.cpp.obj",
+			"SMySlate.cpp.obj"
 		]
 	}
 }

@@ -8,6 +8,7 @@
 #include "Widgets/Layout/SBox.h"
 #include "Widgets/Text/STextBlock.h"
 #include "ToolMenus.h"
+#include "SMySlate.h"
 
 static const FName MyEditorStandaloneWindowTabName("MyEditorStandaloneWindow");
 
@@ -59,18 +60,15 @@ TSharedRef<SDockTab> FMyEditorStandaloneWindowModule::OnSpawnPluginTab(const FSp
 		FText::FromString(TEXT("FMyEditorStandaloneWindowModule::OnSpawnPluginTab")),
 		FText::FromString(TEXT("MyEditorStandaloneWindow.cpp"))
 		);
+	TSharedPtr<SMySlate> SlateWidget;
 
 	return SNew(SDockTab)
 		.TabRole(ETabRole::NomadTab)
 		[
 			// Put your tab content here!
-			SNew(SBox)
-			.HAlign(HAlign_Center)
-			.VAlign(VAlign_Center)
-			[
-				SNew(STextBlock)
-				.Text(WidgetText)
-			]
+			SAssignNew(SlateWidget, SMySlate)   //创建自定义控件
+			.IsFocusable(true)                                //初始化自定义参数
+		.OnMyClicked(FOnButtonClicked::CreateRaw(this, &FMyEditorStandaloneWindowModule::OnClickButton))
 		];
 }
 
@@ -79,12 +77,18 @@ void FMyEditorStandaloneWindowModule::PluginButtonClicked()
 	FGlobalTabmanager::Get()->TryInvokeTab(MyEditorStandaloneWindowTabName);
 }
 
+FReply FMyEditorStandaloneWindowModule::OnClickButton()
+{
+	UE_LOG(LogTemp, Log, TEXT("Bind Fcuntion!"));
+	return FReply::Handled();
+}
+
 void FMyEditorStandaloneWindowModule::RegisterMenus()
 {
 	// Owner will be used for cleanup in call to UToolMenus::UnregisterOwner
 	FToolMenuOwnerScoped OwnerScoped(this);
 
-	/*{
+	{
 		UToolMenu* Menu = UToolMenus::Get()->ExtendMenu("LevelEditor.MainMenu.Window");
 		{
 			FToolMenuSection& Section = Menu->FindOrAddSection("WindowLayout");
@@ -101,7 +105,7 @@ void FMyEditorStandaloneWindowModule::RegisterMenus()
 				Entry.SetCommandList(PluginCommands);
 			}
 		}
-	}*/
+	}
 }
 
 #undef LOCTEXT_NAMESPACE
