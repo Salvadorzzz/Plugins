@@ -8,9 +8,8 @@
 /**
  * 
  */
-//声明带返回值代理类型
+//declare a delegate type with return value
 DECLARE_DELEGATE_RetVal( FReply , FOnButtonClicked )
-
 
 class MYEDITORSTANDALONEWINDOW_API SMySlate : public SCompoundWidget
 {
@@ -20,7 +19,7 @@ public:
 	{}
 
 	SLATE_ARGUMENT(bool, IsFocusable)
-	SLATE_EVENT( FOnButtonClicked , OnMyClicked )    //在FArguments中声明
+	SLATE_EVENT( FOnButtonClicked , OnMyClicked )    //declare in FArguments
 
 	SLATE_END_ARGS()
 
@@ -30,7 +29,7 @@ public:
 private:
 	bool  IsFocusable;
 
-	//声明代理成员变量
+	//Declare delegate member variable
 	FOnButtonClicked OnMyClicked;
 
 	FReply OnClicked();

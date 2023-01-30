@@ -66,8 +66,8 @@ TSharedRef<SDockTab> FMyEditorStandaloneWindowModule::OnSpawnPluginTab(const FSp
 		.TabRole(ETabRole::NomadTab)
 		[
 			// Put your tab content here!
-			SAssignNew(SlateWidget, SMySlate)   //创建自定义控件
-			.IsFocusable(true)                                //初始化自定义参数
+			SAssignNew(SlateWidget, SMySlate)   //Create custom widget
+			.IsFocusable(true)                                //Initialize custom parameters
 		.OnMyClicked(FOnButtonClicked::CreateRaw(this, &FMyEditorStandaloneWindowModule::OnClickButton))
 		];
 }

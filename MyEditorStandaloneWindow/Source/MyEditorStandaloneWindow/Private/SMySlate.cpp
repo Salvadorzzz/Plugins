@@ -8,7 +8,7 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SMySlate::Construct(const FArguments& InArgs)
 {
 
-	//为成员变量赋值
+	//Assigning values to member variables
 	IsFocusable = InArgs._IsFocusable;
 	OnMyClicked = InArgs._OnMyClicked;
 	
