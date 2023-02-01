@@ -17,9 +17,10 @@ void FMyBlankPluginModule::StartupModule()
 	FMyBlankPluginStyle::ReloadTextures();
 	FMyBlankPluginCommands::Register();
 
-	//创建一个共享的指针，指向一个使用 MakeShareable 函数的命令列表
+	//Create a TShared pointer to a commands list which use MakeShareable function
 	PluginCommands = MakeShareable(new FUICommandList);
 	//使用MapAction为FMyBlankPluginCommands 成员的 UICommandInfo 对象和调用命令时要执行的实际函数之间创建映射或关联
+	//Use MapAction to create a mapping or association between the UICommandInfo object of the FMyBlankPluginCommands member and the actual function to be executed when the command is invoked
 	PluginCommands->MapAction(FMyBlankPluginCommands::Get().PluginAction, FExecuteAction::CreateRaw(this, &FMyBlankPluginModule::PluginButtonClicked), FCanExecuteAction());
 
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FMyBlankPluginModule::RegisterMenu));
@@ -39,7 +40,7 @@ void FMyBlankPluginModule::ShutdownModule()
 
 void FMyBlankPluginModule::PluginButtonClicked()
 {
-	FText DialogText = FText::FromString("Hi, this is a BlankPlugin content");
+	FText DialogText = FText::FromString("Hi, this is a BlankPlugin content123123123");
 	FMessageDialog::Open(EAppMsgType ::Ok, DialogText);
 }
 
@@ -65,7 +66,7 @@ void FMyBlankPluginModule::RegisterMenu()
 				FToolMenuSection& ToolBarMenuSection1 = ToolBarMenu1->FindOrAddSection("Content");
 				FToolMenuEntry& ToolBarMenuEntry1 = ToolBarMenuSection1.AddEntry(FToolMenuEntry::InitToolBarButton(FMyBlankPluginCommands::Get().PluginAction));
 				ToolBarMenuEntry1.SetCommandList(PluginCommands);
-				//更改UI排列顺序
+				//Change the order of UI arrangement
 				//ToolBarMenuEntry1.InsertPosition.Position = EToolMenuInsertType::First;
 			}
 		}
@@ -86,7 +87,6 @@ void FMyBlankPluginModule::RegisterMenu()
 		{
 			UToolMenu* ToolBarMenu3 = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar.ModesToolBar");
 			{
-				//需要输入一个与EditorModes不同名字的Sectoin，如果相同，它不会创建，创建成功的话会在Select Mode 框后面创建
 				FToolMenuSection& ToolBarMenuSection3 = ToolBarMenu3->AddSection("EditorModes1");
 				FToolMenuEntry& ToolBarMenuEntry3 = ToolBarMenuSection3.AddEntry(FToolMenuEntry::InitToolBarButton(FMyBlankPluginCommands::Get().PluginAction));
 				ToolBarMenuEntry3.SetCommandList(PluginCommands);
@@ -140,15 +140,14 @@ void FMyBlankPluginModule::RegisterMenu()
 
 	{
 	/////////////////////////////////////////Create a Button in AnimationBlueprintEditor-Help-HelpApplication_Begin
-	// //在动画蓝图的下拉菜单中的某一个Section中添加一个按钮
-	//创建一个扩展器的智能指针
+	//Create a smart pointer to an Extender
 	Extender = MakeShareable(new FExtender());
 	IAnimationBlueprintEditorModule& AnimationBlueprintEditorModule = FModuleManager::LoadModuleChecked<IAnimationBlueprintEditorModule>("AnimationBlueprintEditor");
 
-	//对该扩展器增加一个扩展（对扩展行为的包装） 在哪儿附近进行扩展；扩展的位置；命令集；构造一个委托；绑定一个函数
+	//Add Extension to this Extender: Section,Position,FUICommandList;Create a Delegate;Bind a function
 	Extender->AddMenuExtension("HelpApplication", EExtensionHook::After, PluginCommands, FMenuExtensionDelegate::CreateRaw(this, &FMyBlankPluginModule::AddMenuExtension));
 
-	//拿到扩展管理器，增加扩展
+	//Get the Exttension manager and add Extension
 	AnimationBlueprintEditorModule.GetMenuExtensibilityManager()->AddExtender(Extender);
 
 	/////////////////////////////////////////Create a Button in AnimationBlueprintEditor-Help-HelpApplication_End
@@ -156,15 +155,11 @@ void FMyBlankPluginModule::RegisterMenu()
 
 	{
 	/////////////////////////////////////////Create a Button in AnimationBlueprintEditor_Begin
-	//在动画蓝图的菜单栏添加一个按钮
-		//创建一个扩展器的智能指针
 	AnimToolBarExtender = MakeShareable(new FExtender());
 	IAnimationBlueprintEditorModule& AnimationBlueprintEditorModule = FModuleManager::LoadModuleChecked<IAnimationBlueprintEditorModule>("AnimationBlueprintEditor");
 
-	//对该扩展器增加一个扩展（对扩展行为的包装） 在哪儿附近进行扩展；扩展的位置；命令集；构造一个委托；绑定一个函数
 	AnimToolBarExtender->AddMenuBarExtension("Help", EExtensionHook::Before, PluginCommands, FMenuBarExtensionDelegate::CreateRaw(this, &FMyBlankPluginModule::AddMenuBarExtension));
 
-	//拿到扩展管理器，增加扩展
 	AnimationBlueprintEditorModule.GetMenuExtensibilityManager()->AddExtender(AnimToolBarExtender);
 
 	/////////////////////////////////////////Create a Button in AnimationBlueprintEditor_End
@@ -173,7 +168,6 @@ void FMyBlankPluginModule::RegisterMenu()
 
 	{
 	/////////////////////////////////////////Create a Button on Settings bar in AnimationBlueprintEditor_Begin
-	//在动画蓝图的菜单栏的设置栏添加一个按钮
 
 	MenuBarExtender = MakeShareable(new FExtender());
 	IAnimationBlueprintEditorModule& AnimationBlueprintEditorModule = FModuleManager::LoadModuleChecked<IAnimationBlueprintEditorModule>("AnimationBlueprintEditor");
