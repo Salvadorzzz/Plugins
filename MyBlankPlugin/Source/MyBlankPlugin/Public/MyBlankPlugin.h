@@ -29,6 +29,9 @@ private:
 
 	void OnBPToolBarRegister(class FWorkflowAllowedTabSet& TabSet,FName Name,TSharedPtr<FBlueprintEditor> BP);
 
+	//Standalone window
+	TSharedRef<class SDockTab> OnSpawnPluginTab(const class FSpawnTabArgs& SpawnTabArgs);
+
 
 
 

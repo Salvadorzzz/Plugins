@@ -10,6 +10,8 @@
 
 #define LOCTEXT_NAMESPACE "FMyBlankPluginModule"
 
+static const FName MyBlankPluginStandaloneWindow("MyEditorStandaloneWindow");
+
 void FMyBlankPluginModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
@@ -19,11 +21,16 @@ void FMyBlankPluginModule::StartupModule()
 
 	//Create a TShared pointer to a commands list which use MakeShareable function
 	PluginCommands = MakeShareable(new FUICommandList);
-	//使用MapAction为FMyBlankPluginCommands 成员的 UICommandInfo 对象和调用命令时要执行的实际函数之间创建映射或关联
 	//Use MapAction to create a mapping or association between the UICommandInfo object of the FMyBlankPluginCommands member and the actual function to be executed when the command is invoked
+	 
 	PluginCommands->MapAction(FMyBlankPluginCommands::Get().PluginAction, FExecuteAction::CreateRaw(this, &FMyBlankPluginModule::PluginButtonClicked), FCanExecuteAction());
 
+
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FMyBlankPluginModule::RegisterMenu));
+
+	FGlobalTabmanager::Get()->RegisterNomadTabSpawner(MyBlankPluginStandaloneWindow, FOnSpawnTab::CreateRaw(this, &FMyBlankPluginModule::OnSpawnPluginTab))
+		.SetDisplayName(LOCTEXT("FMyEditorStandaloneWindowTabTitle", "FMyBlankPlugin"))
+		.SetMenuType(ETabSpawnerMenuType::Hidden);
 
 
 }
@@ -36,12 +43,19 @@ void FMyBlankPluginModule::ShutdownModule()
 	UToolMenus::UnregisterOwner(this);
 	FMyBlankPluginStyle::Shutdown();
 	FMyBlankPluginCommands::Unregister();
+
+	FGlobalTabmanager::Get()->UnregisterNomadTabSpawner(MyBlankPluginStandaloneWindow);
 }
 
 void FMyBlankPluginModule::PluginButtonClicked()
 {
-	FText DialogText = FText::FromString("Hi, this is a BlankPlugin content123123123");
-	FMessageDialog::Open(EAppMsgType ::Ok, DialogText);
+	// Popup a Message box
+	//FText DialogText = FText::FromString("Hi, this is a BlankPlugin content");
+	//FMessageDialog::Open(EAppMsgType ::Ok, DialogText);
+
+	// 	//Create Standalone window
+	FGlobalTabmanager::Get()->TryInvokeTab(MyBlankPluginStandaloneWindow);
+	
 }
 
 void FMyBlankPluginModule::RegisterMenu()
@@ -58,7 +72,7 @@ void FMyBlankPluginModule::RegisterMenu()
 			}
 		}
 		/////////////////////////////////////////AddToolBarButtonWithNewSection_End
-
+/*
 		/////////////////////////////////////////AddToolBarButtonInContentSection_Begin
 		{
 			UToolMenu* ToolBarMenu1 = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar.AssetsToolBar");
@@ -183,6 +197,8 @@ void FMyBlankPluginModule::RegisterMenu()
 	{
 		//FBlueprintEditorModule& BlueprintEditorModule = FModuleManager::LoadModuleChecked < FBlueprintEditorModule >("Kismet");
 		//BlueprintEditorModule.OnRegisterTabsForEditor().AddRaw(this, &FMyBlankPluginModule::OnBPToolBarRegister);
+
+			*/
 	}
 
 
@@ -217,6 +233,16 @@ void FMyBlankPluginModule::OnBPToolBarRegister(class FWorkflowAllowedTabSet& Tab
 	ToolBarExtender->AddToolBarExtension("Settings", EExtensionHook::After, PluginCommands, FToolBarExtensionDelegate::CreateRaw(this, &FMyBlankPluginModule::AddToolBarExtension));
 	BP->AddToolbarExtender(ToolBarExtender);
 
+}
+
+TSharedRef<SDockTab> FMyBlankPluginModule::OnSpawnPluginTab(const FSpawnTabArgs& SpawnTabArgs)
+{
+	return SNew(SDockTab)
+		.TabRole(ETabRole::NomadTab)
+		[
+			// Put your tab content here!                           //Initialize custom parameters
+			SNew(SButton)
+		];
 }
 
 #undef LOCTEXT_NAMESPACE
