@@ -13,7 +13,7 @@ class NEWASSET_API UNewAsset : public UObject
 	GENERATED_BODY()
 public:
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category=NewAsset)
-	float Score=0.f;
+	int Score;
 
 	UFUNCTION(BlueprintCallable)
 	void CalScore();
