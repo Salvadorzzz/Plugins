@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Epic Games, Inc. All Rights Reserved.
 
 #pragma once
 
@@ -6,19 +6,15 @@
 #include "UObject/NoExportTypes.h"
 #include "NewAsset.generated.h"
 
-/**
- * 
- */
-UCLASS()
-//This is custom Object type
+
+UCLASS(BlueprintType,Blueprintable)
 class NEWASSET_API UNewAsset : public UObject
 {
 	GENERATED_BODY()
-
 public:
-	UPROPERTY(EditAnyWhere,BlueprintReadOnly, Category=NewAsset)
-	int32 IntValue;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category=NewAsset)
+	float Score=0.f;
 
 	UFUNCTION(BlueprintCallable)
-	void IntFunc();
+	void CalScore();
 };
