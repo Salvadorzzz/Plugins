@@ -18,7 +18,7 @@ public class NewAssetEditor : ModuleRules
 		PrivateIncludePaths.AddRange(
 			new string[] {
 				// ... add other private include paths required here ...
-				"NewAssetEditor/Private/Actions",
+				"NewAssetEditor/Private",
 			}
 			);
 			
@@ -40,7 +40,7 @@ public class NewAssetEditor : ModuleRules
 				"Slate",
 				"SlateCore",
 				"NewAsset",
-				"UnrealED",
+				"UnrealEd",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

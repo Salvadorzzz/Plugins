@@ -7,6 +7,7 @@
 #include "MyBlankPluginCommands.h"
 #include "LevelEditor.h"
 #include "IAnimationBlueprintEditorModule.h"
+#include "NewAsset.h"
 
 #define LOCTEXT_NAMESPACE "FMyBlankPluginModule"
 
@@ -33,6 +34,7 @@ void FMyBlankPluginModule::StartupModule()
 		.SetMenuType(ETabSpawnerMenuType::Hidden);
 
 
+
 }
 
 void FMyBlankPluginModule::ShutdownModule()
@@ -43,6 +45,9 @@ void FMyBlankPluginModule::ShutdownModule()
 	UToolMenus::UnregisterOwner(this);
 	FMyBlankPluginStyle::Shutdown();
 	FMyBlankPluginCommands::Unregister();
+
+	FPropertyEditorModule& PropertyEditorModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+	PropertyEditorModule.UnregisterCustomClassLayout(FName("MyObject"));
 
 	FGlobalTabmanager::Get()->UnregisterNomadTabSpawner(MyBlankPluginStandaloneWindow);
 }
@@ -65,7 +70,7 @@ void FMyBlankPluginModule::RegisterMenu()
 		{
 			UToolMenu* ToolBarMenu = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar.PlayToolBar");
 			{
-				FToolMenuSection& ToolBarMenuSection = ToolBarMenu->FindOrAddSection("ToolBarMenuSection");
+				FToolMenuSection& ToolBarMenuSection = ToolBarMenu->FindOrAddSection("ToolBarMenuSection123");
 				FToolMenuEntry& ToolBarMenuEntry = ToolBarMenuSection.AddEntry(FToolMenuEntry::InitToolBarButton(FMyBlankPluginCommands::Get().PluginAction));
 				ToolBarMenuEntry.SetCommandList(PluginCommands);
 
@@ -237,11 +242,21 @@ void FMyBlankPluginModule::OnBPToolBarRegister(class FWorkflowAllowedTabSet& Tab
 
 TSharedRef<SDockTab> FMyBlankPluginModule::OnSpawnPluginTab(const FSpawnTabArgs& SpawnTabArgs)
 {
+	TSharedPtr<IDetailsView> DetailsView;
+	FPropertyEditorModule& PropertyEditorModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+	FDetailsViewArgs DetailsViewArgs(false, false, false, FDetailsViewArgs::HideNameArea);
+	DetailsView = PropertyEditorModule.CreateDetailView(DetailsViewArgs);
+	UNewAsset* MyClass = NewObject<UNewAsset>();
+	DetailsView->SetObject(MyClass);
+
+
+
+
 	return SNew(SDockTab)
 		.TabRole(ETabRole::NomadTab)
 		[
 			// Put your tab content here!                           //Initialize custom parameters
-			SNew(SButton)
+			DetailsView->AsShared()
 		];
 }
 

@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+#include "IDetailCustomization.h"
+#include "DetailLayoutBuilder.h"
 #include "NewAsset.generated.h"
 
 
@@ -15,6 +17,13 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category=NewAsset)
 	int Score;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = NewAsset)
+	UStaticMesh* Mesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = NewAsset)
+	float a;
+
 	UFUNCTION(BlueprintCallable)
 	void CalScore();
+
 };

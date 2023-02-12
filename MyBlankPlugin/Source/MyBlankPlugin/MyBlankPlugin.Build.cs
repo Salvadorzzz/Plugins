@@ -10,7 +10,7 @@ public class MyBlankPlugin : ModuleRules
 		
 		PublicIncludePaths.AddRange(
 			new string[] {
-				// ... add public include paths required here ...
+				// ... add public include paths required here ... 
 			}
 			);
 				
@@ -45,6 +45,7 @@ public class MyBlankPlugin : ModuleRules
                 "SlateCore",
 				"Kismet",
 				"AnimationBlueprintEditor",
+				"NewAsset",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

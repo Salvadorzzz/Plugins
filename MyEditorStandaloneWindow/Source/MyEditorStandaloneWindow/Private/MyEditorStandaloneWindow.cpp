@@ -88,24 +88,24 @@ void FMyEditorStandaloneWindowModule::RegisterMenus()
 	// Owner will be used for cleanup in call to UToolMenus::UnregisterOwner
 	FToolMenuOwnerScoped OwnerScoped(this);
 
-	{
-		UToolMenu* Menu = UToolMenus::Get()->ExtendMenu("LevelEditor.MainMenu.Window");
-		{
-			FToolMenuSection& Section = Menu->FindOrAddSection("WindowLayout");
-			Section.AddMenuEntryWithCommandList(FMyEditorStandaloneWindowCommands::Get().OpenPluginWindow, PluginCommands);
-		}
-	}
-
-	{
-		UToolMenu* ToolbarMenu = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar");
-		{
-			FToolMenuSection& Section = ToolbarMenu->FindOrAddSection("Settings");
-			{
-				FToolMenuEntry& Entry = Section.AddEntry(FToolMenuEntry::InitToolBarButton(FMyEditorStandaloneWindowCommands::Get().OpenPluginWindow));
-				Entry.SetCommandList(PluginCommands);
-			}
-		}
-	}
+// 	{
+// 		UToolMenu* Menu = UToolMenus::Get()->ExtendMenu("LevelEditor.MainMenu.Window");
+// 		{
+// 			FToolMenuSection& Section = Menu->FindOrAddSection("WindowLayout");
+// 			Section.AddMenuEntryWithCommandList(FMyEditorStandaloneWindowCommands::Get().OpenPluginWindow, PluginCommands);
+// 		}
+// 	}
+// 
+// 	{
+// 		UToolMenu* ToolbarMenu = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar");
+// 		{
+// 			FToolMenuSection& Section = ToolbarMenu->FindOrAddSection("Settings");
+// 			{
+// 				FToolMenuEntry& Entry = Section.AddEntry(FToolMenuEntry::InitToolBarButton(FMyEditorStandaloneWindowCommands::Get().OpenPluginWindow));
+// 				Entry.SetCommandList(PluginCommands);
+// 			}
+// 		}
+// 	}
 }
 
 #undef LOCTEXT_NAMESPACE

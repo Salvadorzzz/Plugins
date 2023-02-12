@@ -5,16 +5,16 @@
 
 UNewAssetFactoryNew::UNewAssetFactoryNew(const FObjectInitializer& ObjectInitializer) :Super(ObjectInitializer)
 {
-// 	SupportedClass = UNewAsset::StaticClass();
-// 	bCreateNew = true;
-// 	bEditAfterNew = true;
+	SupportedClass = UNewAsset::StaticClass();
+	bCreateNew = true;
+	bEditAfterNew = true;
 
 	//drag a NewAsset in Resource Manager
 	//Specify a suffix
-	Formats.Add(FString(TEXT("myfile;'")));
-	SupportedClass = UNewAsset::StaticClass();
-	bCreateNew = false;
-	bEditorImport = true;
+// 	Formats.Add(FString(TEXT("myfile;'")));
+// 	SupportedClass = UNewAsset::StaticClass();
+// 	bCreateNew = false;
+// 	bEditorImport = true;
 }
 
 UObject* UNewAssetFactoryNew::FactoryCreateNew(UClass* InClass, UObject* InParent, FName InName, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn, FName CallingContext)
